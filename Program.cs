@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Threading;
 
 class Program
@@ -7,13 +7,9 @@ class Program
 
     static void Main(string[] args)
     {
-        const string mutexName = "Global\\MyUniqueAppMutex"; 
+        const string mutexName = "Global\\MyUniqueAppMutex";
 
-        bool isNewInstance;
-
-        mutex = new Mutex(true, mutexName, out isNewInstance);
-
-        if (!isNewInstance)
+        if (!TestHelper.TryCreateMutex(mutexName, out mutex))
         {
             Console.WriteLine("Other example is started. Finishing the program.");
             return;
