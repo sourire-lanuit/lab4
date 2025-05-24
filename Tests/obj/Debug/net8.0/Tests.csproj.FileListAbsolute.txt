@@ -1,3 +1,4 @@
+C:\Users\User\git\lab4\Tests\bin\Debug\net8.0\.msCoverageSourceRootsMapping_Tests
 C:\Users\User\git\lab4\Tests\bin\Debug\net8.0\testhost.dll
 C:\Users\User\git\lab4\Tests\bin\Debug\net8.0\lab4proj.deps.json
 C:\Users\User\git\lab4\Tests\bin\Debug\net8.0\lab4proj.runtimeconfig.json
@@ -26,7 +27,6 @@ C:\Users\User\git\lab4\Tests\bin\Debug\net8.0\Microsoft.TestPlatform.Utilities.d
 C:\Users\User\git\lab4\Tests\bin\Debug\net8.0\Microsoft.VisualStudio.TestPlatform.Common.dll
 C:\Users\User\git\lab4\Tests\bin\Debug\net8.0\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
 C:\Users\User\git\lab4\Tests\bin\Debug\net8.0\Newtonsoft.Json.dll
-C:\Users\User\git\lab4\Tests\bin\Debug\net8.0\NuGet.Frameworks.dll
 C:\Users\User\git\lab4\Tests\bin\Debug\net8.0\cs\Microsoft.Testing.Extensions.Telemetry.resources.dll
 C:\Users\User\git\lab4\Tests\bin\Debug\net8.0\de\Microsoft.Testing.Extensions.Telemetry.resources.dll
 C:\Users\User\git\lab4\Tests\bin\Debug\net8.0\es\Microsoft.Testing.Extensions.Telemetry.resources.dll
