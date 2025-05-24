@@ -12,30 +12,25 @@ namespace Tests
         [TestMethod]
         public void OnlyOneInstance_ShouldRun_WhenMutexIsUsed()
         {
-            var output1 = new StringWriter();
-            Console.SetOut(output1);
+            using var sw = new StringWriter();
+            Console.SetOut(sw);
 
-            Task t1 = Task.Run(() =>
-            {
-                var input = new StringReader(Environment.NewLine);
-                Console.SetIn(input);
-
-                Program.Main(null);
-            });
-
-            Thread.Sleep(500); 
-            var output2 = new StringWriter();
-            Console.SetOut(output2);
-
-            Task t2 = Task.Run(() =>
+            var firstTask = Task.Run(() =>
             {
                 Program.Main(null);
             });
 
-            Task.WaitAll(t1, t2);
+            Thread.Sleep(500);
+            using var secondOutput = new StringWriter();
+            Console.SetOut(secondOutput);
 
-            string result2 = output2.ToString();
-            Assert.IsTrue(result2.Contains("Other example is started"), "Second instance should detect that the mutex is taken.");
+            Program.Main(null); 
+            string output = secondOutput.ToString();
+            Assert.IsTrue(output.Contains("Other example is started"), "Second instance should detect that the mutex is taken.");
+
+            Console.SetOut(sw); 
+            Console.SetIn(new StringReader(Environment.NewLine));
+            firstTask.Wait();
         }
     }
 }
