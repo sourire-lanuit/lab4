@@ -21,10 +21,10 @@ namespace Tests
         {
             string name = "Global\\TestMutex_Conflict";
 
-            Mutex first = new Mutex(true, name, out _); 
+            Mutex first = new Mutex(true, name, out _);
 
             bool result = TestHelper.TryCreateMutex(name, out Mutex second);
-            Assert.IsFalse(result); 
+            Assert.IsFalse(result);
         }
     }
 }

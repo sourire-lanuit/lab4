@@ -1,6 +1,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Diagnostics;
+using System;
+using System.IO;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Tests
 {
@@ -10,38 +12,30 @@ namespace Tests
         [TestMethod]
         public void OnlyOneInstance_ShouldRun_WhenMutexIsUsed()
         {
-            string exePath = @"..\..\bin\Debug\net8.0\lab4proj.exe";
+            var output1 = new StringWriter();
+            Console.SetOut(output1);
 
-            var first = Process.Start(new ProcessStartInfo
+            Task t1 = Task.Run(() =>
             {
-                FileName = exePath,
-                RedirectStandardInput = true,
-                RedirectStandardOutput = true,
-                UseShellExecute = false,
-                CreateNoWindow = true
+                var input = new StringReader(Environment.NewLine);
+                Console.SetIn(input);
+
+                Program.Main(null);
             });
 
-            Thread.Sleep(500);
+            Thread.Sleep(500); 
+            var output2 = new StringWriter();
+            Console.SetOut(output2);
 
-            var second = new Process
+            Task t2 = Task.Run(() =>
             {
-                StartInfo = new ProcessStartInfo
-                {
-                    FileName = exePath,
-                    RedirectStandardOutput = true,
-                    UseShellExecute = false,
-                    CreateNoWindow = true
-                }
-            };
+                Program.Main(null);
+            });
 
-            second.Start();
-            string output = second.StandardOutput.ReadToEnd();
-            second.WaitForExit();
+            Task.WaitAll(t1, t2);
 
-            first.StandardInput.WriteLine();
-            first.WaitForExit();
-
-            Assert.IsTrue(output.Contains("Other example is started"), "Estimated message about started example.");
+            string result2 = output2.ToString();
+            Assert.IsTrue(result2.Contains("Other example is started"), "Second instance should detect that the mutex is taken.");
         }
     }
 }

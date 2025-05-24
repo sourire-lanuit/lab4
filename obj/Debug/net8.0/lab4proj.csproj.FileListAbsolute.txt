@@ -1,0 +1,5 @@
+C:\Users\User\git\lab4\obj\Debug\net8.0\lab4proj.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\git\lab4\obj\Debug\net8.0\lab4proj.AssemblyInfoInputs.cache
+C:\Users\User\git\lab4\obj\Debug\net8.0\lab4proj.AssemblyInfo.cs
+C:\Users\User\git\lab4\obj\Debug\net8.0\lab4proj.csproj.CoreCompileInputs.cache
+C:\Users\User\git\lab4\obj\Debug\net8.0\lab4proj.sourcelink.json
